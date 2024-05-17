@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oye_destini/pages/Story_page.dart';
+import 'package:oye_destini/pages/story_page.dart';
 
 void main() {
   runApp(const MyApp());
