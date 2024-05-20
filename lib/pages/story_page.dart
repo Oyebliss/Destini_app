@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oye_destini/utils/story_brain.dart';
 
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key});
@@ -8,6 +9,8 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
+  // creating an object of StoryBrain.
+  StoryBrain storyBrain = StoryBrain();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +27,12 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'This is the story',
-                    style: TextStyle(
+                    storyBrain.getStory(),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
                       fontSize: 25,
@@ -37,6 +40,8 @@ class _StoryPageState extends State<StoryPage> {
                   ),
                 ),
               ),
+
+              // Choice 1 button
               Expanded(
                 flex: 2,
                 child: TextButton(
@@ -51,6 +56,8 @@ class _StoryPageState extends State<StoryPage> {
               const SizedBox(
                 height: 20,
               ),
+
+              // Choice 2 button
               Expanded(
                 flex: 2,
                 child: TextButton(
