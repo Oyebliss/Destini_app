@@ -46,9 +46,11 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: TextButton(
                   style: TextButton.styleFrom(backgroundColor: Colors.red),
-                  onPressed: () {},
-                  child: const Text(
-                    'Choice 1',
+                  onPressed: () {
+                    storyBrain.nextStory(1);
+                  },
+                  child: Text(
+                    storyBrain.getChoice1(),
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                 ),
@@ -62,9 +64,11 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: TextButton(
                   style: TextButton.styleFrom(backgroundColor: Colors.green),
-                  onPressed: () {},
-                  child: const Text(
-                    'Choice 2',
+                  onPressed: () {
+                    storyBrain.nextStory(2);
+                  },
+                  child: Text(
+                    storyBrain.getChoice2(),
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                 ),
