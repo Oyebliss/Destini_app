@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:oye_destini/utils/story_brain.dart';
 
+// creating an object of StoryBrain.
+StoryBrain storyBrain = StoryBrain();
+
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key});
 
@@ -9,8 +12,6 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
-  // creating an object of StoryBrain.
-  StoryBrain storyBrain = StoryBrain();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +48,16 @@ class _StoryPageState extends State<StoryPage> {
                 child: TextButton(
                   style: TextButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: () {
-                    storyBrain.nextStory(1);
+                    setState(() {
+                      storyBrain.nextStory(1);
+                    });
                   },
                   child: Text(
                     storyBrain.getChoice1(),
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
                   ),
                 ),
               ),
@@ -62,14 +68,22 @@ class _StoryPageState extends State<StoryPage> {
               // Choice 2 button
               Expanded(
                 flex: 2,
-                child: TextButton(
-                  style: TextButton.styleFrom(backgroundColor: Colors.green),
-                  onPressed: () {
-                    storyBrain.nextStory(2);
-                  },
-                  child: Text(
-                    storyBrain.getChoice2(),
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible(),
+                  child: TextButton(
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
+                    style: TextButton.styleFrom(backgroundColor: Colors.green),
+                    child: Text(
+                      storyBrain.getChoice2(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
                   ),
                 ),
               ),
